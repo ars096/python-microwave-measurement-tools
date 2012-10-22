@@ -25,25 +25,25 @@ class gpib_prologix(com_ethernet.ethernet):
         self.timeout = timeout
         pass
 
-    def set_mode_device(self):
-        return self.s.send('++mode 0')
+    def mode_device(self):
+        return self.s.send('++mode 0\n')
 
-    def set_mode_controller(self):
-        return self.s.send('++mode 1')
+    def mode_controller(self):
+        return self.s.send('++mode 1\n')
 
-    def set_auto_listen(self):
-        return self.s.send('++auto 0')
+    def auto_listen(self):
+        return self.s.send('++auto 0\n')
 
-    def set_auto_talk(self):
-        return self.s.send('++auto 1')
+    def auto_talk(self):
+        return self.s.send('++auto 1\n')
 
     def set_gpibport(self):
-        return self.s.send('++addr %d'%(self.gpibport))
+        return self.s.send('++addr %d\n'%(self.gpibport))
 
     def _close(self):
         """
         """
-        self.set_mode_device()
+        self.mode_device()
         self.s.close()
         self.s = None
         return self.s
@@ -51,15 +51,15 @@ class gpib_prologix(com_ethernet.ethernet):
     def _recv(self, byte):
         """
         """
-        self.set_auto_talk()
+        self.auto_talk()
         return self.s.recv(byte)
 
     def _send(self, msg):
         """
         """
-        self.set_mode_controller()
+        self.mode_controller()
         self.set_gpibport()
-        self.set_auto_listen()
+        self.auto_listen()
         return self.s.send(msg)
 
 

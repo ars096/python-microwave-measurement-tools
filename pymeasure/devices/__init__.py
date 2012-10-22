@@ -6,4 +6,4 @@ Documents
 """
 
 from dev_signal_generator import select_signal_generator as signal_generator
-
+from dev_power_meter import select_power_meter as power_meter
