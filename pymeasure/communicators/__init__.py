@@ -6,6 +6,6 @@ Documents
 """
 
 from com_ethernet import ethernet
-
+from com_gpib_prologix import gpib_prologix
 
 

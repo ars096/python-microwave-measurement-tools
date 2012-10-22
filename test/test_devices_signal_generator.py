@@ -6,7 +6,7 @@ Documents
 """
 
 
-TARGET = ('192.168.100.211', 7777)
+TARGET = ('192.168.100.210', 7777)
 COMMAND_TYPE = 'SCPI'
 CONNECTION_METHOD = 'Ethernet'
 

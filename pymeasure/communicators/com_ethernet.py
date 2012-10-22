@@ -63,12 +63,10 @@ class ethernet(communicator.communicator):
     def _recv(self, byte):
         """
         """
-        ret = self.s.recv(byte)
-        return ret
+        return self.s.recv(byte)
 
     def _send(self, msg):
         """
         """
-        ret = self.s.send(msg)
-        return ret
+        return self.s.send(msg)
 
