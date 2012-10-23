@@ -75,7 +75,7 @@ class anritsu_command(power_meter, device.device):
         set average by time
         mode is always 'AUTO'
         """
-        #TODO:some day
+        #TODO:someday
         if ch == 1: ch = 'A'
         elif ch == 2: ch = 'B'
         self.com.open()
@@ -95,21 +95,24 @@ class anritsu_command(power_meter, device.device):
         elif ch == 2: ch = 'B'
         self.com.send('AVG? %s'%ch)
         a = int(self.com.readline().split(',')[-1])
-        print a
         return a
 
-    @device._open_close
-    def set_unit(self, units, ch=1):
-        """
-        -- Method --
-        set unit ([dBm] or [W])
-        """
-        pass
+
 
     @device._open_close
     def check_unit(self, ch=1):
         """
         -- Method --
-        check unit
+        check units
         """
-        pass
+        self.com.send('CHUNIT? %d' %ch)
+        return self.com.readline().strip().split(',')[-1]
+
+    @device._open_close
+    def set_unit(self, units, ch=1):
+        """
+        -- Method --
+        set unit ([dBm] or [W] or [DBUV) or [DBMW]
+        """
+        self.com.send('CHUNIT %d, %s' %(ch,units))
+        return self.check_unit(ch)
