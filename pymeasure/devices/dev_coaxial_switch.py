@@ -31,8 +31,8 @@ class coaxial_switch(object):
         pass
 
     @device._open_close
-    def set_close_swicth(self, ch):
-        pass
+    def set_close_switch(self, ch):
+      pass
 
     @device._open_close
     def check_close_switch(self, ch):
@@ -44,29 +44,53 @@ class SCPI_command(coaxial_switch, device.scpi_device):
     def check_supply_voltage(self, ch=1):
         """
         -- Method --
-        query supply voltage
+        query supply voltage to coaxial switch
         """
         self.com.send('CONFigure:BANK%d?' %ch)
-        return self.com.readline()
-
-
-#    @device._open_close
-#    def set_supply_voltage(self):
-#        self.com.send('CONFigure:BANK%d P24v')
-#        return self.check_supply_voltage(ch)
+        return int(self.com.readline().strip("\n")[1:])
 
     @device._open_close
-    def set_open_switch(self, ch):
-        pass
+    def set_supply_voltage(self, ch=1):
+        """
+        -- Method --
+        set supply voltage to coaxial switch
+        note that "Agilent 11713B" sets only supply DC 24V
+        """
+        self.com.send('CONFigure:BANK%d P24v'%ch)
+        return self.check_supply_voltage(ch)
 
     @device._open_close
-    def check_open_switch(self, ch):
-        pass
+    def check_open_switch(self, ch='201:208'):
+        """
+        -- Method --
+        query open switching path.
+        """
+        self.com.send(':RouTe:OPEn? (@%s)'%ch)
+        return map(int, self.com.readline().strip('\n').split(','))
 
     @device._open_close
-    def set_close_swicth(self, ch):
-        pass
+    def check_close_switch(self, ch='201:208'):
+        """
+        -- Method --
+        query close switching path
+        """
+        self.com.send(':RouTe:CLOSe? (@%s)'%ch)
+        return map(int, self.com.readline().strip('\n').split(','))
 
     @device._open_close
-    def check_close_switch(self, ch):
-        pass
+    def set_open_switch(self, ch='101:104'):
+        """
+        -- Method --
+        set open switching path
+        """
+        self.com.send(':RouTe:OPEn (@%s)'%ch)
+        return self.check_open_switch(ch)
+
+    @device._open_close
+    def set_close_switch(self, ch='101:104'):
+        """
+        -- Method --
+        set close switching path
+        """
+        self.com.send(':RouTe:CLOSe (@%s)'%ch)
+        return self.check_close_switch(ch)

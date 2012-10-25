@@ -6,7 +6,7 @@ Documents
 """
 
 
-TARGET = ('192.168.100.210', 1234, 28)
+TARGET = ('192.168.100.220', 1234, 28)
 COMMAND_TYPE = 'SCPI'
 CONNECTION_METHOD = 'GPIB_PROLOGIX'
 
@@ -29,22 +29,35 @@ class Test_Coaxial_Switch(unittest.TestCase):
     def test_check_supply_voltage(self):
         com = pymeasure.create_communicator(CONNECTION_METHOD, *TARGET)
         cs = pymeasure.devices.coaxial_switch(COMMAND_TYPE, com)
-        print cs.check_supply_voltage()
+        self.assertIsInstance(cs.check_supply_voltage(), int)
 
     def test_set_supply_voltage(self):
-        pass
+        com = pymeasure.create_communicator(CONNECTION_METHOD, *TARGET)
+        cs = pymeasure.devices.coaxial_switch(COMMAND_TYPE, com)
+        cs.set_supply_voltage()
+        self.assertIsInstance(cs.check_supply_voltage(), int)
 
     def test_check_open_switch(self):
-        pass
-
-    def test_set_open_switch(self):
-        pass
+        com = pymeasure.create_communicator(CONNECTION_METHOD, *TARGET)
+        cs = pymeasure.devices.coaxial_switch(COMMAND_TYPE, com)
+        self.assertIsInstance(cs.check_open_switch(), list)
 
     def test_check_close_switch(self):
-        pass
+        com = pymeasure.create_communicator(CONNECTION_METHOD, *TARGET)
+        cs = pymeasure.devices.coaxial_switch(COMMAND_TYPE, com)
+        self.assertIsInstance(cs.check_close_switch(), list)
+
+
+    def test_set_open_switch(self):
+        com = pymeasure.create_communicator(CONNECTION_METHOD, *TARGET)
+        cs = pymeasure.devices.coaxial_switch(COMMAND_TYPE, com)
+        self.assertIsInstance(cs.set_open_switch(), list)
+
 
     def test_set_close_switch(self):
-        pass
+        com = pymeasure.create_communicator(CONNECTION_METHOD, *TARGET)
+        cs = pymeasure.devices.coaxial_switch(COMMAND_TYPE, com)
+        self.assertIsInstance(cs.set_close_switch(), list)
 
 
 
