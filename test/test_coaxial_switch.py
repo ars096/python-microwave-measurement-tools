@@ -59,6 +59,11 @@ class Test_Coaxial_Switch(unittest.TestCase):
         cs = pymeasure.devices.coaxial_switch(COMMAND_TYPE, com)
         self.assertIsInstance(cs.set_close_switch(), list)
 
+    def test_set_all_close_switch(self):
+        com = pymeasure.create_communicator(CONNECTION_METHOD, *TARGET)
+        cs = pymeasure.devices.coaxial_switch(COMMAND_TYPE, com)
+        self.assertIsInstance(cs.set_all_close_switch(), list)
+
 
 
 if __name__=='__main__':

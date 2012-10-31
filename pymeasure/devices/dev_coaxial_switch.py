@@ -38,6 +38,10 @@ class coaxial_switch(object):
     def check_close_switch(self, ch):
         pass
 
+    @device._open_close
+    def set_all_close_switch(self):
+        pass
+
 
 class SCPI_command(coaxial_switch, device.scpi_device):
     @device._open_close
@@ -65,7 +69,7 @@ class SCPI_command(coaxial_switch, device.scpi_device):
         -- Method --
         query open switching path.
         """
-        self.com.send(':RouTe:OPEn? (@%s)'%ch)
+        self.com.send(':ROUTe:OPEn? (@%s)'%ch)
         return map(int, self.com.readline().strip('\n').split(','))
 
     @device._open_close
@@ -74,7 +78,7 @@ class SCPI_command(coaxial_switch, device.scpi_device):
         -- Method --
         query close switching path
         """
-        self.com.send(':RouTe:CLOSe? (@%s)'%ch)
+        self.com.send(':ROUTe:CLOSe? (@%s)'%ch)
         return map(int, self.com.readline().strip('\n').split(','))
 
     @device._open_close
@@ -83,7 +87,7 @@ class SCPI_command(coaxial_switch, device.scpi_device):
         -- Method --
         set open switching path
         """
-        self.com.send(':RouTe:OPEn (@%s)'%ch)
+        self.com.send(':ROUTe:OPEn (@%s)'%ch)
         return self.check_open_switch(ch)
 
     @device._open_close
@@ -92,5 +96,14 @@ class SCPI_command(coaxial_switch, device.scpi_device):
         -- Method --
         set close switching path
         """
-        self.com.send(':RouTe:CLOSe (@%s)'%ch)
+        self.com.send(':ROUTe:CLOSe (@%s)'%ch)
         return self.check_close_switch(ch)
+
+
+    def set_all_close_switch(self):
+        """
+        -- Method --
+        set close switching path
+        """
+        self.com.send(':ROUTe:CLOSe:ALL')
+        return self.check_close_switch(ch='101:108')
