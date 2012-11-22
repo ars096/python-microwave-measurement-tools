@@ -53,8 +53,8 @@ class SCPI_command(signal_generator, device.scpi_device):
         --------------------
             # -- N5183A, socket port = 5025
             E8241A, socket port = 7777
-            E8257D, soclet port = 7777
-
+            E8247A, socket port = 7777
+            E8257D, socket port = 7777
     """
     @device._open_close
     def set_freq(self, freq, unit='MHz'):

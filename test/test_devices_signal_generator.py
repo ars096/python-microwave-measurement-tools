@@ -6,7 +6,7 @@ Documents
 """
 
 
-TARGET = ('192.168.100.210', 7777)
+TARGET = ('192.168.100.181', 7777)
 COMMAND_TYPE = 'SCPI'
 CONNECTION_METHOD = 'Ethernet'
 
@@ -35,6 +35,7 @@ class Test_Signal_Generator(unittest.TestCase):
         self.assertIsNotNone(sg.set_communicator(com))
         info = sg.get_product_information()
         self.assertIsInstance(info, str)
+        print(info)
 
     def test_check_freq(self):
         com = pymeasure.create_communicator(CONNECTION_METHOD, *TARGET)
