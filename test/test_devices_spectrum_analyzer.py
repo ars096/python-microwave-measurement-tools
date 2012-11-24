@@ -98,12 +98,34 @@ class Test_Spectrum_Analyzer(unittest.TestCase):
         self.assertEqual(dev.set_resolution_bandwidth('auto'), -1)
         self.assertEqual(dev.set_resolution_bandwidth(1, 'MHz'), 1e6)
         self.assertEqual(dev.set_resolution_bandwidth(10, 'kHz'), 10e3)
-        self.assertEqual(dev.set_resolution_bandwidth('auto'), -1)
+        self.assertEqual(dev.set_resolution_bandwidth(3, 'MHz'), 3e6)
 
     def test_check_resolution_bandwidth(self):
         com = pymeasure.create_communicator(CONNECTION_METHOD, *TARGET)
         dev = create_test_device(COMMAND_TYPE, com)
         self.assertIsInstance(dev.check_resolution_bandwidth(), float)
+
+    def test_set_sweep_points(self):
+        com = pymeasure.create_communicator(CONNECTION_METHOD, *TARGET)
+        dev = create_test_device(COMMAND_TYPE, com)
+        self.assertEqual(dev.set_sweep_points(101), 101)
+        self.assertEqual(dev.set_sweep_points(501), 501)
+        self.assertEqual(dev.set_sweep_points(1001), 1001)
+        self.assertEqual(dev.set_sweep_points(4001), 4001)
+        self.assertEqual(dev.set_sweep_points(601), 601)
+
+    def test_check_sweep_points(self):
+        com = pymeasure.create_communicator(CONNECTION_METHOD, *TARGET)
+        dev = create_test_device(COMMAND_TYPE, com)
+        self.assertIsInstance(dev.check_sweep_points(), float)
+
+    def test_measure(self):
+        com = pymeasure.create_communicator(CONNECTION_METHOD, *TARGET)
+        dev = create_test_device(COMMAND_TYPE, com)
+        points = dev.check_sweep_points()
+        spec = dev.measure()
+        self.assertIsInstance(spec[0], float)
+        self.assertEqual(len(spec), points)
 
 
     """

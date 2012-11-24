@@ -20,11 +20,17 @@ def create_gpib_prologix(host, port, gpibport):
     return communicators.gpib_prologix(host, port, gpibport)
 
 
-def create_signalgenerator(command_type, communication_method, *args, **kwargs):
-    """
-    """
+def signalgenerator(command_type, communication_method, *args, **kwargs):
     com = create_communicator(communication_method, *args, **kwargs)
     return devices.signal_generator(command_type, com)
+
+def powermeter(command_type, communication_method, *args, **kwargs):
+    com = create_communicator(communication_method, *args, **kwargs)
+    return devices.power_meter(command_type, com)
+
+def spectrumanalyzer(command_type, communication_method, *args, **kwargs):
+    com = create_communicator(communication_method, *args, **kwargs)
+    return devices.spectrum_analyzer(command_type, com)
 
 
 

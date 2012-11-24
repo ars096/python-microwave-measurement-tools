@@ -6,9 +6,10 @@ Documents
 """
 
 import time
+import numpy
 import device
 
-set_sleep = 0.5
+set_sleep = 0.3
 
 def select_spectrum_analyzer(command_type, *args, **kwargs):
     command_type = command_type.lower()
@@ -18,6 +19,12 @@ def select_spectrum_analyzer(command_type, *args, **kwargs):
     return None
 
 class spectrum_analyzer(object):
+    def get_axis(self):
+        start = self.check_freq_start()
+        end = self.check_freq_stop()
+        num = self.check_sweep_points()
+        return numpy.linspace(start, end, num)
+
     @device._open_close
     def set_freq_center(self, freq):
         pass
@@ -55,7 +62,7 @@ class spectrum_analyzer(object):
         pass
 
     @device._open_close
-    def check_time_average(self):
+    def check_average(self):
         pass
 
     @device._open_close
@@ -64,6 +71,14 @@ class spectrum_analyzer(object):
 
     @device._open_close
     def check_resolution_bandwidth(self):
+        pass
+
+    @device._open_close
+    def set_sweep_points(self, points):
+        pass
+
+    @device._open_close
+    def check_sweep_points(self):
         pass
 
     @device._open_close
@@ -174,3 +189,19 @@ class SCPI_command(spectrum_analyzer, device.scpi_device):
         self.com.send(':BANDWIDTH:RESOLUTION %f %s'%(bandwidth, unit))
         return float(self.check_resolution_bandwidth())
 
+    @device._open_close
+    def set_sweep_points(self, points):
+        self.com.send(':SENSE:SWEEP:POINTS %d'%(points))
+        return self.check_sweep_points()
+
+    @device._open_close
+    def check_sweep_points(self):
+        self.com.send(':SENSE:SWEEP:POINTS?')
+        return float(self.com.readline())
+
+    @device._open_close
+    def measure(self):
+        self.com.send(':TRACE:DATA? TRACE1')
+        spectrum_str = self.com.readline()
+        spectrum = numpy.array(spectrum_str.split(','), dtype=float)
+        return spectrum
