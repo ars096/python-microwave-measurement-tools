@@ -10,51 +10,44 @@ import device
 
 def select_signal_generator(command_type, *args, **kwargs):
     command_type = command_type.lower()
-    if command_type=='scpi': return SCPI_command(*args, **kwargs)
-    if command_type=='anritsu': return anritsu_command(*args, **kwargs)
-    if command_type=='phasematrix': return phasematrix_command(*args, **kwargs)
+    if command_type=='scpi': return scpi(*args, **kwargs)
+    if command_type=='anritsu': return anritsu(*args, **kwargs)
+    if command_type=='phasematrix': return phasematrix(*args, **kwargs)
     return None
 
 class signal_generator(object):
-    @device._open_close
     def set_freq(self, freq, unit='MHz'):
         pass
 
-    @device._open_close
     def check_freq(self):
         pass
 
-    @device._open_close
     def set_power(self, power, unit='dBm'):
         pass
 
-    @device._open_close
     def check_power(self):
         pass
 
-    @device._open_close
     def check_output(self):
         pass
 
-    @device._open_close
     def output_on(self):
         pass
 
-    @device._open_close
     def output_off(self):
         pass
 
 
-class SCPI_command(signal_generator, device.scpi_device):
+class scpi(signal_generator, device.scpi_device):
     """
     tested products
     ===============
         Agilent Technologies
         --------------------
             # -- N5183A, socket port = 5025
-            E8241A, socket port = 7777
-            E8247A, socket port = 7777
-            E8257D, socket port = 7777
+            E8241A, Ethernet(port=7777)
+            E8247A, Ethernet(port=7777)
+            E8257D, Ethernet(port=7777)
     """
     @device._open_close
     def set_freq(self, freq, unit='MHz'):
@@ -92,7 +85,7 @@ class SCPI_command(signal_generator, device.scpi_device):
         return self.check_output()
 
 
-class anritsu_command(SCPI_command):
+class anritsu(scpi):
     #TODO: test this class
     """
     supported products
@@ -127,13 +120,13 @@ class anritsu_command(SCPI_command):
         return self.check_output()
 
 
-class phasematrix_command(signal_generator, device.device):
+class phasematrix(signal_generator, device.device):
     """
     tested products
     ===============
         Phase Matrix
         ------------
-            FSW-0010, soclet port = 10001
+            FSW-0010, Ethernet(port=10001)
     """
     unit_dic = {'GHz': 1e9, 'MHz': 1e6, 'kHz': 1e3}
 

@@ -9,11 +9,19 @@ import communicators
 import devices
 
 def create_communicator(communication_method, *args, **kwargs):
-    mehtod = communication_method.lower()
-    if method=='ethernet': return communicators.ethernet(*args, **kwargs)
-    elif method=='gpib_prologix': return communicators.gpib_prologix(*args, **kwargs)
-    elif method=='ni_usb': return communicators.ni_usb(*args, **kwargs)
+    method = communication_method.lower()
+
+    if method in ['ethernet', 'lan']:
+        return communicators.ethernet(*args, **kwargs)
+
+    elif method in ['gpib_prologix', 'gpib-prologix', 'prologix']:
+        return communicators.gpib_prologix(*args, **kwargs)
+
+    elif method in ['ni_usb']:
+        return communicators.ni_usb(*args, **kwargs)
+
     return None
+
 
 def signalgenerator(command_type, communication_method, *args, **kwargs):
     com = create_communicator(communication_method, *args, **kwargs)
@@ -31,4 +39,10 @@ def io(command_type, communication_method, *args, **kwargs):
     com = create_communicator(communication_method, *args, **kwargs)
     return devices.io(command_type, com)
 
+def coaxial_switch(command_type, communication_method, *args, **kwargs):
+    com = create_communicator(communication_method, *args, **kwargs)
+    return devices.coaxial_switch(command_type, com)
 
+def attenuator(command_type, communication_method, *args, **kwargs):
+    com = create_communicator(communication_method, *args, **kwargs)
+    return devices.attenuator(command_type, com)

@@ -5,45 +5,27 @@
 Documents
 """
 
+import numpy
 import device
 
 def select_coaxial_switch(command_type, *args, **kwargs):
     command_type = command_type.lower()
-    if command_type=='scpi': return SCPI_command(*args, **kwargs)
+    #if command_type=='scpi': return scpi(*args, **kwargs)
+    if command_type=='agilent': return agilent(*args, **kwargs)
+    if command_type=='agilent11713b': return agilent_11713b(*args, **kwargs)
+    if command_type=='agilent11713c': return agilent_11713c(*args, **kwargs)
     return None
 
 
 class coaxial_switch(object):
-    @device._open_close
-    def check_supply_voltage(self):
+    def set_ch(self, ch):
         pass
 
-    @device._open_close
-    def set_supply_voltage(self):
-        pass
-
-    @device._open_close
-    def set_open_switch(self, ch):
-        pass
-
-    @device._open_close
-    def check_open_switch(self, ch):
-        pass
-
-    @device._open_close
-    def set_close_switch(self, ch):
-      pass
-
-    @device._open_close
-    def check_close_switch(self, ch):
-        pass
-
-    @device._open_close
-    def set_all_close_switch(self):
+    def check_ch(self):
         pass
 
 
-class SCPI_command(coaxial_switch, device.scpi_device):
+class agilent(device.scpi_device):
     @device._open_close
     def check_supply_voltage(self, ch=1):
         """
@@ -64,7 +46,7 @@ class SCPI_command(coaxial_switch, device.scpi_device):
         return self.check_supply_voltage(ch)
 
     @device._open_close
-    def check_open_switch(self, ch='201:208'):
+    def check_open_switch(self, ch='101:108'):
         """
         -- Method --
         query open switching path.
@@ -73,7 +55,7 @@ class SCPI_command(coaxial_switch, device.scpi_device):
         return map(int, self.com.readline().strip('\n').split(','))
 
     @device._open_close
-    def check_close_switch(self, ch='201:208'):
+    def check_close_switch(self, ch='101:108'):
         """
         -- Method --
         query close switching path
@@ -100,10 +82,55 @@ class SCPI_command(coaxial_switch, device.scpi_device):
         return self.check_close_switch(ch)
 
 
-    def set_all_close_switch(self):
-        """
-        -- Method --
-        set close switching path
-        """
-        self.com.send(':ROUTe:CLOSe:ALL')
-        return self.check_close_switch(ch='101:108')
+class agilent_11713b(coaxial_switch, agilent):
+    def check_ch(self):
+        getch = lambda x: numpy.where(numpy.array(x)==1)[0][0] + 1
+        x1 = getch(self.check_open_switch('101:104'))
+        x2 = getch(self.check_open_switch('105:108'))
+        return x1, x2
+
+    def set_ch(self, ch):
+        if type(ch)==int: ch = [ch]*2
+        for ch_num in ch:
+            if (ch_num >= 5) or (ch_num <=0):
+                print('bad ch number. it must be 1-4')
+                return None
+            continue
+
+        self.set_close_switch('101:108')
+        self.set_open_switch('%d'%(100+ch[1]))
+        self.set_open_switch('%d'%(100+ch[1]+4))
+        return self.check_ch()
+
+class agilent_11713c(coaxial_switch, agilent):
+    """
+    tested products
+    ===============
+        Agilent Technologies
+        ----------------------
+            11713C, ehternet(port=5025)
+
+    """
+    def check_ch(self):
+        getch = lambda x: numpy.where(numpy.array(x)==1)[0][0] + 1
+        x1 = getch(self.check_open_switch('101:104'))
+        x2 = getch(self.check_open_switch('105:108'))
+        y1 = getch(self.check_open_switch('201:204'))
+        y2 = getch(self.check_open_switch('205:208'))
+        return x1, x2, y1, y2
+
+    def set_ch(self, ch):
+        if type(ch)==int: ch = [ch]*4
+        for ch_num in ch:
+            if (ch_num >= 5) or (ch_num <=0):
+                print('bad ch number. it must be 1-4')
+                return None
+            continue
+
+        self.set_close_switch('101:108')
+        self.set_close_switch('201:208')
+        self.set_open_switch('%d'%(100+ch[1]))
+        self.set_open_switch('%d'%(100+ch[1]+4))
+        self.set_open_switch('%d'%(200+ch[1]))
+        self.set_open_switch('%d'%(200+ch[1]+4))
+        return self.check_ch()

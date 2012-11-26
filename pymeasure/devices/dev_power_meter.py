@@ -15,44 +15,19 @@ def select_power_meter(command_type, *args, **kwargs):
 
 
 class power_meter(object):
-    @device._open_close
     def measure(self, ch=1):
-        """
-        -- Method --
-        retrieve a value of power meter
-        """
         pass
 
-    @device._open_close
     def set_average(self, average, ch=1):
-        """
-        -- Method --
-        set average by time
-        """
         pass
 
-    @device._open_close
     def check_average(self, ch=1):
-        """
-        -- Method --
-        check average by time
-        """
         pass
 
-    @device._open_close
     def set_unit(self, units, ch=1):
-        """
-        -- Method --
-        set unit ([dBm] or [W])
-        """
         pass
 
-    @device._open_close
     def check_unit(self, ch=1):
-        """
-        -- Method --
-        check unit
-        """
         pass
 
 

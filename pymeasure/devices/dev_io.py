@@ -11,32 +11,26 @@ import device
 def select_io(command_type, *args, **kwargs):
     command_type = command_type.lower()
     if command_type=='ni_daq': return ni_daq(*args, **kwargs)
-    #if command_type=='scpi': return SCPI_command(*args, **kwargs)
+    #if command_type=='scpi': return scpi_command(*args, **kwargs)
     return None
 
 
 class io(object):
-    @device._open_close
     def set_analog_output(self, level, ch):
         pass
 
-    @device._open_close
     def check_analog_output(self, ch):
         pass
 
-    @device._open_close
     def check_analog_input(self, ch):
         pass
 
-    @device._open_close
     def set_digital_output(self, ch):
         pass
 
-    @device._open_close
     def check_digital_output(self, ch):
         pass
 
-    @device._open_close
     def check_digital_input(self, ch):
         pass
 
@@ -69,19 +63,16 @@ class ni_daq(io, device.device):
             self.ai_terminal = terminal_type.lower()
         return self.ai_terminal
 
-    @device._open_close
     def set_analog_output(self, level, ch):
         pass
 
-    @device._open_close
     def check_analog_output(self, ch):
         pass
 
-    @device._open_close
     def check_analog_input(self, ch):
         import nidaqmx
         task = nidaqmx.AnalogInputTask()
-        task.create_voltage_channel('%s/ai%d',
+        task.create_voltage_channel('%s/ai%d'%(self.devname, ch),
                                     terminal=self.ai_terminal,
                                     min_val=self.ai_range[0],
                                     max_val=self.ai_range[1])
@@ -89,15 +80,12 @@ class ni_daq(io, device.device):
         d = task.read(100)
         return numpy.average(d)
 
-    @device._open_close
     def set_digital_output(self, ch):
         pass
 
-    @device._open_close
     def check_digital_output(self, ch):
         pass
 
-    @device._open_close
     def check_digital_input(self, ch):
         pass
 

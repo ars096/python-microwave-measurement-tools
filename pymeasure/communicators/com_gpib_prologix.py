@@ -16,14 +16,18 @@ class gpib_prologix(com_ethernet.ethernet):
     gpibport = None
     s = None
 
-    def __init__(self, host, port, gpibport, timeout=None):
+    def __init__(self, host, port, gpib, timeout=None):
         """
         """
         self.host = host
         self.port = port
-        self.gpibport = gpibport
+        self.gpibport = gpib
         self.timeout = timeout
         pass
+
+    def set_gpib_address(self, gpib):
+        self.gpibport = int(gpib)
+        return
 
     def mode_device(self):
         return self.s.send('++mode 0\n')
