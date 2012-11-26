@@ -10,6 +10,7 @@ import device
 
 def select_io(command_type, *args, **kwargs):
     command_type = command_type.lower()
+    if command_type=='ni_daq': return ni_daq(*args, **kwargs)
     #if command_type=='scpi': return SCPI_command(*args, **kwargs)
     return None
 
@@ -46,9 +47,14 @@ class ni_daq(io, device.device):
     ai_terminal = 'default'
     terminal_list = ['default', 'rse', 'nrse', 'diff', 'pseudodiff']
 
-    def __init__(self, devname='Dev1', communicator=None):
-        self.devname = devname
+    def __init__(self, communicator=None):
+        if not communicator is None: self.devname = communicator.devname
         device.device.__init__(self, communicator)
+        pass
+
+    def set_device(self, devname):
+        self.devname = devname
+        return self.devname
 
     def set_ai_range(self, min_val=None, max_val=None):
         if min_val is not None: self.ai_range[0] = min_val

@@ -9,16 +9,11 @@ import communicators
 import devices
 
 def create_communicator(communication_method, *args, **kwargs):
-    if communication_method.lower()=='ethernet': return create_ethernet(*args, **kwargs)
-    if communication_method.lower()=='gpib_prologix': return create_gpib_prologix(*args, **kwargs)
+    mehtod = communication_method.lower()
+    if method=='ethernet': return communicators.ethernet(*args, **kwargs)
+    elif method=='gpib_prologix': return communicators.gpib_prologix(*args, **kwargs)
+    elif method=='ni_usb': return communicators.ni_usb(*args, **kwargs)
     return None
-
-def create_ethernet(host, port):
-    return communicators.ethernet(host, port)
-
-def create_gpib_prologix(host, port, gpibport):
-    return communicators.gpib_prologix(host, port, gpibport)
-
 
 def signalgenerator(command_type, communication_method, *args, **kwargs):
     com = create_communicator(communication_method, *args, **kwargs)
@@ -32,12 +27,8 @@ def spectrumanalyzer(command_type, communication_method, *args, **kwargs):
     com = create_communicator(communication_method, *args, **kwargs)
     return devices.spectrum_analyzer(command_type, com)
 
-
-
-class creator(object):
-    """
-    """
-    pass
-
+def io(command_type, communication_method, *args, **kwargs):
+    com = create_communicator(communication_method, *args, **kwargs)
+    return devices.io(command_type, com)
 
 
