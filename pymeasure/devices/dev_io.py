@@ -65,16 +65,42 @@ class ni_daq(io, device.device):
             self.ai_terminal = terminal_type.lower()
         return self.ai_terminal
 
+    def set_ao_range(self, min_val=None, max_val=None):
+        if min_val is not None: self.ao_range[0] = min_val
+        if max_val is not None: self.ao_range[1] = max_val
+        return self.ao_range
+
     def set_analog_output(self, level, ch=0):
         import nidaqmx
         task = nidaqmx.AnalogOutputTask()
-        task.create_voltage_channel('%s/ai%d'%(self.devname, ch),
-                                    min_val=self.ai_range[0],
-                                    max_val=self.ai_range[1])
+        task.create_voltage_channel('%s/ao%d'%(self.devname, ch),
+                                    min_val=self.ao_range[0],
+                                    max_val=self.ao_range[1])
         task.write([level]*2)
         del(task)
         self.ao_data[ch] = level
         return self.check_analog_output(ch)
+
+    def sweep_analog_output(self, min, max, cycle=1, ch=0):
+        data = numpy.concatenate([numpy.linspace(min, max, 501),
+                                  numpy.linspace(max, min, 501)])
+        self._sweep_analog_output(data, cycle, ch)
+        return
+
+    def _sweep_analog_output(self, data, cycle=1, ch=0):
+        num = len(data)
+
+        task = nidaqmx.AnalogOutputTask()
+        task.create_voltage_channel('%s/ao%d'%(self.devname, ch),
+                                    min_val=self.ao_range[0],
+                                    max_val=self.ao_range[1])
+        task.configure_timing_sample_clock(rate=num*cycle)
+        task.write(data)
+        task.start()
+        raw_input('Enter any key to stop sweeping')
+        task.stop()
+        del(task)
+        return
 
     def check_analog_output(self, ch=0):
         return self.ao_data.get(ch, None)

@@ -10,11 +10,6 @@ class ni_usb(communicator.communicator):
     """
     """
     devname = 'Dev1'
-    timeout = None # in second
-    host = None
-    port = None
-    gpibport = None
-    s = None
 
     def __init__(self, devname):
         """
