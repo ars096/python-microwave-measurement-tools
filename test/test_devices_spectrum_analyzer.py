@@ -128,32 +128,6 @@ class Test_Spectrum_Analyzer(unittest.TestCase):
         self.assertEqual(len(spec), points)
 
 
-    """
-    def test_check_power(self):
-        com = pymeasure.create_communicator(CONNECTION_METHOD, *TARGET)
-        sg = pymeasure.devices.signal_generator(COMMAND_TYPE, com)
-        self.assertIsInstance(sg.check_power(), float)
-
-    def test_set_power(self):
-        com = pymeasure.create_communicator(CONNECTION_METHOD, *TARGET)
-        sg = pymeasure.devices.signal_generator(COMMAND_TYPE, com)
-        self.assertEqual(sg.set_power(-10, 'dBm'), -10)
-        self.assertEqual(sg.set_power(-15, 'dBm'), -15)
-        self.assertEqual(sg.set_power(-20, 'dBm'), -20)
-
-    def test_check_output(self):
-        com = pymeasure.create_communicator(CONNECTION_METHOD, *TARGET)
-        sg = pymeasure.devices.signal_generator(COMMAND_TYPE, com)
-        self.assertIsInstance(sg.check_output(), int)
-
-    def test_output_on_off(self):
-        com = pymeasure.create_communicator(CONNECTION_METHOD, *TARGET)
-        sg = pymeasure.devices.signal_generator(COMMAND_TYPE, com)
-        self.assertEqual(sg.output_on(), 1)
-        self.assertEqual(sg.output_off(), 0)
-    """
-
-
 
 if __name__=='__main__':
     unittest.main()
