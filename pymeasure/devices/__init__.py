@@ -2,7 +2,7 @@
 #-*- coding: utf-8 -*-
 
 """
-Documents
+デバイスのモジュールへのリンクモジュールです。
 """
 
 from dev_signal_generator import select_signal_generator as signal_generator

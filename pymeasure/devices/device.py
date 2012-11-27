@@ -2,7 +2,8 @@
 #-*- coding: utf-8 -*-
 
 """
-Documents
+デバイスの親クラス(pymeasure.device) と、
+デバイスのメソッドをデコレートする open_close関数を定義しています。
 """
 
 import functools
