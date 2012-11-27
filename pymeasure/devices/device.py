@@ -79,12 +79,6 @@ class device(object):
         -------
         information : 機器固有の情報(メーカー,型番,シリアル,バージョン,等)
 
-        See Also
-        --------
-
-        Notes
-        -----
-
         Examples
         --------
         >>> sg.product_information()
