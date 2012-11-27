@@ -128,6 +128,6 @@ class elva1(attenuator, device.scpi_device):
         return self.get_gpib_address()
 
     # set doc strings
-    __doc__ = attenuator.__doc__
+    __doc__ += attenuator.__doc__
     set_level.__doc__ = attenuator.set_level.__doc__
     check_level.__doc__ = attenuator.check_level.__doc__
