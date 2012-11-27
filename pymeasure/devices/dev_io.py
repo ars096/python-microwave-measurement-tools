@@ -88,6 +88,7 @@ class ni_daq(io, device.device):
         return
 
     def _sweep_analog_output(self, data, cycle=1, ch=0):
+        import nidaqmx
         num = len(data)
 
         task = nidaqmx.AnalogOutputTask()
@@ -96,7 +97,7 @@ class ni_daq(io, device.device):
                                     max_val=self.ao_range[1])
         task.configure_timing_sample_clock(rate=num*cycle)
         task.write(data)
-        task.start()
+        #task.start()
         raw_input('Enter any key to stop sweeping')
         task.stop()
         del(task)

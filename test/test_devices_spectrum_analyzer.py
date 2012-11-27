@@ -6,9 +6,13 @@ Documents
 """
 
 
-TARGET = ('192.168.100.182', 5025)
-COMMAND_TYPE = 'SCPI'
-CONNECTION_METHOD = 'Ethernet'
+#TARGET = ('192.168.100.182', 5025)
+#COMMAND_TYPE = 'SCPI'
+#CONNECTION_METHOD = 'Ethernet'
+
+TARGET = ('192.168.100.220', 1234, 30)
+COMMAND_TYPE = 'HP8590'
+CONNECTION_METHOD = 'GPIB-Prologix'
 
 
 import pymeasure
@@ -117,7 +121,7 @@ class Test_Spectrum_Analyzer(unittest.TestCase):
     def test_check_sweep_points(self):
         com = pymeasure.create_communicator(CONNECTION_METHOD, *TARGET)
         dev = create_test_device(COMMAND_TYPE, com)
-        self.assertIsInstance(dev.check_sweep_points(), float)
+        self.assertIsInstance(dev.check_sweep_points(), int)
 
     def test_measure(self):
         com = pymeasure.create_communicator(CONNECTION_METHOD, *TARGET)
