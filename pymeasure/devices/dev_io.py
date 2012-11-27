@@ -16,26 +16,166 @@ def select_io(command_type, *args, **kwargs):
 
 
 class io(object):
+    """
+    Input / Output
+    ===============
+
+    使用できるメソッド
+    ------------------
+    * set_analog_output(level, ch)
+    * check_analog_output(ch)
+    * check_analog_input(ch)
+    * set_digital_output(on_off, ch)
+    * check_digital_output(ch)
+    * check_digital_input(ch)
+
+    * get_product_information()
+
+    使用できるプロパティ
+    -------------------
+    * tested_products
+    """
     def set_analog_output(self, level, ch):
+        """
+        アナログ出力を設定します。
+
+        Parameters
+        ----------
+        level : float
+            アナログ出力値
+        ch : int
+            設定するチャンネル
+
+        Returns
+        -------
+        level : float, 設定後のアナログ出力値
+
+        Examples
+        --------
+        >>> io.set_analog_output(4.5, 0)
+        4.5
+        """
         pass
 
     def check_analog_output(self, ch):
+        """
+        アナログ出力を確認します。
+
+        Parameters
+        ----------
+        ch : int
+            確認するチャンネル
+
+        Returns
+        -------
+        level : float, アナログ出力値
+
+        Examples
+        --------
+        >>> io.check_analog_output(0)
+        4.5
+        """
         pass
 
     def check_analog_input(self, ch):
+        """
+        アナログ入力を確認します。
+
+        Parameters
+        ----------
+        ch : int
+            確認するチャンネル
+
+        Returns
+        -------
+        level : float, アナログ入力値
+
+        Examples
+        --------
+        >>> io.check_analog_input(0)
+        3.2
+        """
         pass
 
-    def set_digital_output(self, ch):
+    def set_digital_output(self, on_off, ch):
+        """
+        デジタル出力を設定します。
+
+        Parameters
+        ----------
+        on_off : [0, 1]
+            0 -- OFF,  1 -- ON
+        ch : int
+            設定するチャンネル
+
+        Returns
+        -------
+        on_off : int,  設定後のデジタル出力値
+
+        Examples
+        --------
+        >>> io.set_digital_output(1, 0)
+        1
+        """
         pass
 
     def check_digital_output(self, ch):
+        """
+        デジタル出力を確認します。
+
+        Parameters
+        ----------
+        ch : int
+            設定するチャンネル
+
+        Returns
+        -------
+        on_off : int,  デジタル出力値
+
+        Examples
+        --------
+        >>> io.check_digital_output(0)
+        1
+        """
         pass
 
     def check_digital_input(self, ch):
+        """
+        デジタル入力を確認します。
+
+        Parameters
+        ----------
+        ch : int
+            確認するチャンネル
+
+        Returns
+        -------
+        on_off : int,  デジタル入力値
+
+        Examples
+        --------
+        >>> io.check_digital_input(0)
+        1
+        """
         pass
 
 
 class ni_daq(io, device.device):
+    """
+    NI_DAQ
+    ======
+
+    使用できるメソッド
+    ------------------
+    * sweep_analog_output(min, max, cycle, ch)
+
+    """
+    tested_products = {
+        'National Instruments':[
+            'NI USB-6229',
+            ]
+    }
+
     devname = 'Dev1'
     ai_range = [-10., 10.]
     ai_terminal = 'default'
@@ -82,6 +222,29 @@ class ni_daq(io, device.device):
         return self.check_analog_output(ch)
 
     def sweep_analog_output(self, min, max, cycle=1, ch=0):
+        """
+        バイアススイープを行います。
+        [Enter] を押すと、スイープを終了します。
+
+        Parameters
+        ----------
+        min : float
+            スイープの最小レベル
+        max : float
+            スイープの最大レベル
+        cycle : float
+            周期 [Hz]
+        ch : int
+            スイープするチャンネル
+
+        Returns
+        -------
+        None :
+
+        Examples
+        --------
+        >>> ni_daq.sweep_analog_output(0)
+        """
         data = numpy.concatenate([numpy.linspace(min, max, 501),
                                   numpy.linspace(max, min, 501)])
         self._sweep_analog_output(data, cycle, ch)
@@ -126,4 +289,10 @@ class ni_daq(io, device.device):
 
     def check_digital_input(self, ch):
         pass
+
+    # set doc strings
+    __doc__ += io.__doc__
+    set_analog_output.__doc__ = io.set_analog_output.__doc__
+    check_analog_output.__doc__ = io.check_analog_output.__doc__
+    check_analog_input.__doc__ = io.check_analog_input.__doc__
 
