@@ -1,0 +1,768 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>pymeasure</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;pymeasure
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="pymeasure-module.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PACKAGE DESCRIPTION ==================== -->
+<h1 class="epydoc">Package pymeasure</h1><p class="nomargin-top"><span class="codelink"><a href="pymeasure-pysrc.html">source&nbsp;code</a></span></p>
+<pre class="literalblock">
+
+pymeasure
+=========
+
+&#30446;&#30340;
+  1. &#38651;&#27874;&#35336;&#28204;&#27231;&#22120;&#12434; python &#12363;&#12425;&#25805;&#20316;&#12375;&#12414;&#12377;&#12290;
+
+&#20351;&#12356;&#26041; (Signal Generator &#12398;&#20363;)
+-------------------------------
+1. &#12487;&#12496;&#12452;&#12473;&#12434;&#29983;&#25104;&#12375;&#12414;&#12377;&#12290;
+  &gt;&gt;&gt; sg = pymeasure.signalgenerator('SCPI', 'Ethernet',
+                                     host='192.168.100.10', port=5025)
+
+2. &#12487;&#12496;&#12452;&#12473;&#12395;&#21629;&#20196;&#12434;&#20986;&#12375;&#12414;&#12377;&#12290;
+  &gt;&gt;&gt; sg.set_freq(10, 'GHz')
+  &gt;&gt;&gt; sg.set_power(-15, 'dBm')
+  &gt;&gt;&gt; sg.output_on()
+
+3. &#12424;&#12426;&#35443;&#12375;&#12367;&#20351;&#12356;&#26041;&#12434;&#35211;&#12383;&#12356;&#22580;&#21512;&#12399;
+  &gt;&gt;&gt; help(sg)
+
+&#12487;&#12496;&#12452;&#12473;&#12398;&#29983;&#25104;&#26041;&#27861;
+------------------
+&#12487;&#12496;&#12452;&#12473;&#12434;&#29983;&#25104;&#12377;&#12427;&#12383;&#12417;&#12395;&#20197;&#19979;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#23455;&#34892;&#12375;&#12414;&#12377;&#12290;
+  &gt;&gt;&gt; pymeasure.&#12487;&#12496;&#12452;&#12473;&#12398;&#31278;&#39006;(&#12467;&#12510;&#12531;&#12489;&#12398;&#31278;&#39006;, &#36890;&#20449;&#26041;&#27861;, [&#36890;&#20449;&#26041;&#27861;&#12398;&#35373;&#23450;])
+
+&#20351;&#29992;&#12391;&#12365;&#12427;&#12487;&#12496;&#12452;&#12473;&#12398;&#31278;&#39006;&#19968;&#35239; (2012/11/27&#26356;&#26032;)
+---------------------------------------------
+&#23455;&#35013;&#28168;&#12415;&#12398;&#12467;&#12510;&#12531;&#12489;&#12398;&#31278;&#39006;&#12434;&#20341;&#35352;
+* signalgenerator
+  - scpi, anritsu, phasematrix
+
+* spectrumanalyzet
+  - scpi, hp8590
+
+* powermeter
+  - anritsu
+
+* io
+  - ni_daq (windows only)
+
+* coaxialswitch
+  - agilent11713b, agilent11713c
+
+* attenuator
+  - elva1
+
+&#20351;&#29992;&#12391;&#12365;&#12427;&#36890;&#20449;&#26041;&#27861;&#12398;&#19968;&#35239; (2012/11/27&#26356;&#26032;)
+---------------------------------------
+&#24517;&#35201;&#12394;&#36890;&#20449;&#26041;&#27861;&#12398;&#35373;&#23450;&#12497;&#12521;&#12513;&#12540;&#12479;&#12434;&#20341;&#35352;
+* Ethernet
+  - host(&#12507;&#12473;&#12488;&#21517;), port(&#12509;&#12540;&#12488;&#30058;&#21495;)
+
+* GPIB (via Prologix Ethernet converter)
+  - host(&#12507;&#12473;&#12488;&#21517;), port(&#12509;&#12540;&#12488;&#30058;&#21495;), gpib(GPIB&#12450;&#12489;&#12524;&#12473;)
+
+* USB (for National Instruments DAQ, windows only)
+  - devname(&#12487;&#12496;&#12452;&#12473;&#21517;)
+
+Author
+------
+Atsushi Nishimura (s_a.nishimura@p.s.osakafu-u.ac.jp)
+
+</pre>
+
+<!-- ==================== SUBMODULES ==================== -->
+<a name="section-Submodules"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Submodules</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Submodules"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr><td class="summary">
+  <ul class="nomargin">
+    <li> <strong class="uidlink"><a href="pymeasure.communicators-module.html">pymeasure.communicators</a></strong>: <em class="summary">Documents</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="pymeasure.communicators.com_ehernet-module.html">pymeasure.communicators.com_ehernet</a></strong>: <em class="summary">Documents</em>    </li>
+    <li> <strong class="uidlink"><a href="pymeasure.communicators.com_ethernet-module.html">pymeasure.communicators.com_ethernet</a></strong>: <em class="summary">Documents</em>    </li>
+    <li> <strong class="uidlink"><a href="pymeasure.communicators.com_gpib_prologix-module.html">pymeasure.communicators.com_gpib_prologix</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="pymeasure.communicators.com_network-module.html">pymeasure.communicators.com_network</a></strong>: <em class="summary">Documents</em>    </li>
+    <li> <strong class="uidlink"><a href="pymeasure.communicators.com_ni_usb-module.html">pymeasure.communicators.com_ni_usb</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="pymeasure.communicators.communicator-module.html">pymeasure.communicators.communicator</a></strong>: <em class="summary">Documents</em>    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="pymeasure.devices-module.html">pymeasure.devices</a></strong>: <em class="summary">&#12487;&#12496;&#12452;&#12473;&#12398;&#12514;&#12472;&#12517;&#12540;&#12523;&#12408;&#12398;&#12522;&#12531;&#12463;&#12514;&#12472;&#12517;&#12540;&#12523;&#12391;&#12377;&#12290;</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="pymeasure.devices.dev_attenuator-module.html">pymeasure.devices.dev_attenuator</a></strong>: <em class="summary">Documents</em>    </li>
+    <li> <strong class="uidlink"><a href="pymeasure.devices.dev_coaxial_switch-module.html">pymeasure.devices.dev_coaxial_switch</a></strong>: <em class="summary">Documents</em>    </li>
+    <li> <strong class="uidlink"><a href="pymeasure.devices.dev_io-module.html">pymeasure.devices.dev_io</a></strong>: <em class="summary">Documents</em>    </li>
+    <li> <strong class="uidlink"><a href="pymeasure.devices.dev_power_meter-module.html">pymeasure.devices.dev_power_meter</a></strong>: <em class="summary">Documents</em>    </li>
+    <li> <strong class="uidlink"><a href="pymeasure.devices.dev_signal_generator-module.html">pymeasure.devices.dev_signal_generator</a></strong>: <em class="summary">Documents</em>    </li>
+    <li> <strong class="uidlink"><a href="pymeasure.devices.dev_spectrum_analyzer-module.html">pymeasure.devices.dev_spectrum_analyzer</a></strong>: <em class="summary">Documents</em>    </li>
+    <li> <strong class="uidlink"><a href="pymeasure.devices.device-module.html">pymeasure.devices.device</a></strong>: <em class="summary">&#12487;&#12496;&#12452;&#12473;&#12398;&#35242;&#12463;&#12521;&#12473;(pymeasure.device) &#12392;&#12289; &#12487;&#12496;&#12452;&#12473;&#12398;&#12513;&#12477;&#12483;&#12489;&#12434;&#12487;&#12467;&#12524;&#12540;&#12488;&#12377;&#12427; 
+        open_close&#38306;&#25968;&#12434;&#23450;&#32681;&#12375;&#12390;&#12356;&#12414;&#12377;&#12290;</em>    </li>
+    <li> <strong class="uidlink"><a href="pymeasure.devices.signal_generator-module.html">pymeasure.devices.signal_generator</a></strong>: <em class="summary">Documents</em>    </li>
+    </ul>
+    </li>
+  </ul></td></tr>
+</table>
+
+<br />
+<!-- ==================== FUNCTIONS ==================== -->
+<a name="section-Functions"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Functions</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Functions"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pymeasure-module.html#create_communicator" class="summary-sig-name">create_communicator</a>(<span class="summary-sig-arg">communication_method</span>,
+        <span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      &#36890;&#20449;&#12452;&#12531;&#12473;&#12479;&#12531;&#12473;&#12434;&#29983;&#25104;&#12375;&#12414;&#12377;&#12290;</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pymeasure-pysrc.html#create_communicator">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pymeasure-module.html#signalgenerator" class="summary-sig-name">signalgenerator</a>(<span class="summary-sig-arg">command_type</span>,
+        <span class="summary-sig-arg">communication_method</span>,
+        <span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Signal Generator &#12395;&#25509;&#32154;&#12375;&#12289;&#20351;&#29992;&#12391;&#12365;&#12427;&#12424;&#12358;&#12395;&#12375;&#12414;&#12377;&#12290;</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pymeasure-pysrc.html#signalgenerator">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pymeasure-module.html#powermeter" class="summary-sig-name">powermeter</a>(<span class="summary-sig-arg">command_type</span>,
+        <span class="summary-sig-arg">communication_method</span>,
+        <span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Power Meter &#12395;&#25509;&#32154;&#12375;&#12289;&#20351;&#29992;&#12391;&#12365;&#12427;&#12424;&#12358;&#12395;&#12375;&#12414;&#12377;&#12290;</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pymeasure-pysrc.html#powermeter">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pymeasure-module.html#spectrumanalyzer" class="summary-sig-name">spectrumanalyzer</a>(<span class="summary-sig-arg">command_type</span>,
+        <span class="summary-sig-arg">communication_method</span>,
+        <span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Spectrum Analyzer &#12395;&#25509;&#32154;&#12375;&#12289;&#20351;&#29992;&#12391;&#12365;&#12427;&#12424;&#12358;&#12395;&#12375;&#12414;&#12377;&#12290;</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pymeasure-pysrc.html#spectrumanalyzer">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pymeasure-module.html#io" class="summary-sig-name">io</a>(<span class="summary-sig-arg">command_type</span>,
+        <span class="summary-sig-arg">communication_method</span>,
+        <span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      (Analog, Digital)I/O &#12395;&#25509;&#32154;&#12375;&#12289;&#20351;&#29992;&#12391;&#12365;&#12427;&#12424;&#12358;&#12395;&#12375;&#12414;&#12377;&#12290;</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pymeasure-pysrc.html#io">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pymeasure-module.html#coaxial_switch" class="summary-sig-name">coaxial_switch</a>(<span class="summary-sig-arg">command_type</span>,
+        <span class="summary-sig-arg">communication_method</span>,
+        <span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Coaxial Switch &#12395;&#25509;&#32154;&#12375;&#12289;&#20351;&#29992;&#12391;&#12365;&#12427;&#12424;&#12358;&#12395;&#12375;&#12414;&#12377;&#12290;</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pymeasure-pysrc.html#coaxial_switch">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pymeasure-module.html#attenuator" class="summary-sig-name">attenuator</a>(<span class="summary-sig-arg">command_type</span>,
+        <span class="summary-sig-arg">communication_method</span>,
+        <span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Attenuator &#12395;&#25509;&#32154;&#12375;&#12289;&#20351;&#29992;&#12391;&#12365;&#12427;&#12424;&#12358;&#12395;&#12375;&#12414;&#12377;&#12290;</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pymeasure-pysrc.html#attenuator">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Variables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'pymeasure'"><code class="variable-quote">'</code><code class="variable-string">pymeasure</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTION DETAILS ==================== -->
+<a name="section-FunctionDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Function Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-FunctionDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="create_communicator"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">create_communicator</span>(<span class="sig-arg">communication_method</span>,
+        <span class="sig-arg">*args</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pymeasure-pysrc.html#create_communicator">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+
+&#36890;&#20449;&#12452;&#12531;&#12473;&#12479;&#12531;&#12473;&#12434;&#29983;&#25104;&#12375;&#12414;&#12377;&#12290;
+
+Parameters
+----------
+communication_method : &#25991;&#23383;&#21015;
+    'Ethernet', 'LAN' --&gt; Ethernet&#36890;&#20449;&#12452;&#12531;&#12473;&#12479;&#12531;&#12473;&#12434;&#36820;&#12375;&#12414;&#12377;&#12290;
+        &#24517;&#35201;&#12394;&#24341;&#25968; : host, port
+    'GPIB_Prologix', 'Prologix' --&gt; GPIB_Prologix&#36890;&#20449;&#12452;&#12531;&#12473;&#12479;&#12531;&#12473;&#12434;&#36820;&#12375;&#12414;&#12377;&#12290;
+        &#24517;&#35201;&#12394;&#24341;&#25968; : host, port, gpib
+    'NI_USB' --&gt; NI_DAQ&#29992;&#12398;USB&#36890;&#20449;&#12452;&#12531;&#12473;&#12479;&#12531;&#12473;&#12434;&#36820;&#12375;&#12414;&#12377;&#12290;
+        &#24517;&#35201;&#12394;&#24341;&#25968; : devname
+
+    &#25991;&#23383;&#21015;&#12398;&#22823;&#25991;&#23383;&#23567;&#25991;&#23383;&#12399;&#21306;&#21029;&#12375;&#12414;&#12379;&#12435;&#12290;
+
+Returns
+-------
+com : &#36890;&#20449;&#12452;&#12531;&#12473;&#12479;&#12531;&#12473;
+
+Notes
+-----
+
+Examples
+--------
+&gt;&gt;&gt; com = pymeasure.create_communicator('Ethernet',
+                                        host='192.168.100.11', port=5025)
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="signalgenerator"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">signalgenerator</span>(<span class="sig-arg">command_type</span>,
+        <span class="sig-arg">communication_method</span>,
+        <span class="sig-arg">*args</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pymeasure-pysrc.html#signalgenerator">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+
+Signal Generator &#12395;&#25509;&#32154;&#12375;&#12289;&#20351;&#29992;&#12391;&#12365;&#12427;&#12424;&#12358;&#12395;&#12375;&#12414;&#12377;&#12290;
+
+Parameters
+----------
+command_type : &#25991;&#23383;&#21015;
+    &#21046;&#24481;&#12467;&#12510;&#12531;&#12489;&#12398;&#31278;&#39006;&#12434;&#25351;&#23450;&#12375;&#12414;&#12377;&#12290;
+    'SCPI', 'anritsu', 'phasematrix' &#12364;&#20351;&#29992;&#21487;&#33021;&#12391;&#12377;&#12290;
+    - &#20491;&#12293;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#29992;&#12356;&#12390;&#21033;&#29992;&#12391;&#12365;&#12427;&#35013;&#32622;&#21517;&#12399; help(sg) &#12391;&#30906;&#35469;&#12391;&#12365;&#12414;&#12377;&#12290;
+    command_type &#12398;&#25991;&#23383;&#21015;&#12399;&#22823;&#25991;&#23383;&#23567;&#25991;&#23383;&#12434;&#21306;&#21029;&#12373;&#12428;&#12414;&#12379;&#12435;&#12290;
+communication_method : &#25991;&#23383;&#21015;
+    &#36890;&#20449;&#26041;&#24335;&#12434;&#25351;&#23450;&#12375;&#12414;&#12377;&#12290;
+    'Ethernet', 'GPIB_Prologix' &#12364;&#20351;&#29992;&#21487;&#33021;&#12391;&#12377;&#12290;
+    - 'Ethernet' &#12398;&#22580;&#21512;&#12289;&#12373;&#12425;&#12395;&#12289;host, port &#12434;&#24341;&#25968;&#12391;&#19982;&#12360;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;
+    - 'GPIB_Prologix' &#12398;&#22580;&#21512;&#12289;&#12373;&#12425;&#12395;&#12289;host, port, gpib &#12434;&#24341;&#25968;&#12391;&#19982;&#12360;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;
+    &#36890;&#20449;&#26041;&#24335;&#12398;&#24341;&#25968;&#12395;&#12388;&#12356;&#12390;&#12398;&#35443;&#32048;&#12399;&#12289;pymeasure.create_communicator &#12434;
+    &#21442;&#29031;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;
+    communication_method &#12398;&#25991;&#23383;&#21015;&#12399;&#22823;&#25991;&#23383;&#23567;&#25991;&#23383;&#12434;&#21306;&#21029;&#12373;&#12428;&#12414;&#12379;&#12435;&#12290;
+
+Returns
+-------
+sg : Signal Generator &#12452;&#12531;&#12473;&#12479;&#12531;&#12473;
+
+Examples
+--------
+&gt;&gt;&gt; sg = pymeasure.signalgenerator('SCPI', 'Ethernet',
+                                   host='192.168.100.10', port=5025)
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="powermeter"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">powermeter</span>(<span class="sig-arg">command_type</span>,
+        <span class="sig-arg">communication_method</span>,
+        <span class="sig-arg">*args</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pymeasure-pysrc.html#powermeter">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+
+Power Meter &#12395;&#25509;&#32154;&#12375;&#12289;&#20351;&#29992;&#12391;&#12365;&#12427;&#12424;&#12358;&#12395;&#12375;&#12414;&#12377;&#12290;
+
+Parameters
+----------
+command_type : &#25991;&#23383;&#21015;
+    &#21046;&#24481;&#12467;&#12510;&#12531;&#12489;&#12398;&#31278;&#39006;&#12434;&#25351;&#23450;&#12375;&#12414;&#12377;&#12290;
+    'anritsu' &#12364;&#20351;&#29992;&#21487;&#33021;&#12391;&#12377;&#12290;
+    - &#20491;&#12293;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#29992;&#12356;&#12390;&#21033;&#29992;&#12391;&#12365;&#12427;&#35013;&#32622;&#21517;&#12399; help(pm) &#12391;&#30906;&#35469;&#12391;&#12365;&#12414;&#12377;&#12290;
+    command_type &#12398;&#25991;&#23383;&#21015;&#12399;&#22823;&#25991;&#23383;&#23567;&#25991;&#23383;&#12434;&#21306;&#21029;&#12373;&#12428;&#12414;&#12379;&#12435;&#12290;
+communication_method : &#25991;&#23383;&#21015;
+    &#36890;&#20449;&#26041;&#24335;&#12434;&#25351;&#23450;&#12375;&#12414;&#12377;&#12290;
+    'Ethernet', 'GPIB_Prologix' &#12364;&#20351;&#29992;&#21487;&#33021;&#12391;&#12377;&#12290;
+    - 'Ethernet' &#12398;&#22580;&#21512;&#12289;&#12373;&#12425;&#12395;&#12289;host, port &#12434;&#24341;&#25968;&#12391;&#19982;&#12360;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;
+    - 'GPIB_Prologix' &#12398;&#22580;&#21512;&#12289;&#12373;&#12425;&#12395;&#12289;host, port, gpib &#12434;&#24341;&#25968;&#12391;&#19982;&#12360;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;
+    &#36890;&#20449;&#26041;&#24335;&#12398;&#24341;&#25968;&#12395;&#12388;&#12356;&#12390;&#12398;&#35443;&#32048;&#12399;&#12289;pymeasure.create_communicator &#12434;
+    &#21442;&#29031;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;
+    communication_method &#12398;&#25991;&#23383;&#21015;&#12399;&#22823;&#25991;&#23383;&#23567;&#25991;&#23383;&#12434;&#21306;&#21029;&#12373;&#12428;&#12414;&#12379;&#12435;&#12290;
+
+Returns
+-------
+pm : Power Meter &#12452;&#12531;&#12473;&#12479;&#12531;&#12473;
+
+Examples
+--------
+&gt;&gt;&gt; pm = pymeasure.powermeter('Anritsu', 'GPIB_Prologix',
+                              host='192.168.100.10', port=1234, gpib=10)
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="spectrumanalyzer"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">spectrumanalyzer</span>(<span class="sig-arg">command_type</span>,
+        <span class="sig-arg">communication_method</span>,
+        <span class="sig-arg">*args</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pymeasure-pysrc.html#spectrumanalyzer">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+
+Spectrum Analyzer &#12395;&#25509;&#32154;&#12375;&#12289;&#20351;&#29992;&#12391;&#12365;&#12427;&#12424;&#12358;&#12395;&#12375;&#12414;&#12377;&#12290;
+
+Parameters
+----------
+command_type : &#25991;&#23383;&#21015;
+    &#21046;&#24481;&#12467;&#12510;&#12531;&#12489;&#12398;&#31278;&#39006;&#12434;&#25351;&#23450;&#12375;&#12414;&#12377;&#12290;
+    'scpi', 'hp8590' &#12364;&#20351;&#29992;&#21487;&#33021;&#12391;&#12377;&#12290;
+    - &#20491;&#12293;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#29992;&#12356;&#12390;&#21033;&#29992;&#12391;&#12365;&#12427;&#35013;&#32622;&#21517;&#12399; help(sa) &#12391;&#30906;&#35469;&#12391;&#12365;&#12414;&#12377;&#12290;
+    command_type &#12398;&#25991;&#23383;&#21015;&#12399;&#22823;&#25991;&#23383;&#23567;&#25991;&#23383;&#12434;&#21306;&#21029;&#12373;&#12428;&#12414;&#12379;&#12435;&#12290;
+communication_method : &#25991;&#23383;&#21015;
+    &#36890;&#20449;&#26041;&#24335;&#12434;&#25351;&#23450;&#12375;&#12414;&#12377;&#12290;
+    'Ethernet', 'GPIB_Prologix' &#12364;&#20351;&#29992;&#21487;&#33021;&#12391;&#12377;&#12290;
+    - 'Ethernet' &#12398;&#22580;&#21512;&#12289;&#12373;&#12425;&#12395;&#12289;host, port &#12434;&#24341;&#25968;&#12391;&#19982;&#12360;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;
+    - 'GPIB_Prologix' &#12398;&#22580;&#21512;&#12289;&#12373;&#12425;&#12395;&#12289;host, port, gpib &#12434;&#24341;&#25968;&#12391;&#19982;&#12360;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;
+    &#36890;&#20449;&#26041;&#24335;&#12398;&#24341;&#25968;&#12395;&#12388;&#12356;&#12390;&#12398;&#35443;&#32048;&#12399;&#12289;pymeasure.create_communicator &#12434;
+    &#21442;&#29031;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;
+    communication_method &#12398;&#25991;&#23383;&#21015;&#12399;&#22823;&#25991;&#23383;&#23567;&#25991;&#23383;&#12434;&#21306;&#21029;&#12373;&#12428;&#12414;&#12379;&#12435;&#12290;
+
+Returns
+-------
+sa : Spectrum Analyzer &#12452;&#12531;&#12473;&#12479;&#12531;&#12473;
+
+Examples
+--------
+&gt;&gt;&gt; sa = pymeasure.spectrumanalyzer('SCPI', 'Ethernet',
+                                    host='192.168.100.10', port=1234)
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="io"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">io</span>(<span class="sig-arg">command_type</span>,
+        <span class="sig-arg">communication_method</span>,
+        <span class="sig-arg">*args</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pymeasure-pysrc.html#io">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+
+(Analog, Digital)I/O &#12395;&#25509;&#32154;&#12375;&#12289;&#20351;&#29992;&#12391;&#12365;&#12427;&#12424;&#12358;&#12395;&#12375;&#12414;&#12377;&#12290;
+
+Parameters
+----------
+command_type : &#25991;&#23383;&#21015;
+    &#21046;&#24481;&#12467;&#12510;&#12531;&#12489;&#12398;&#31278;&#39006;&#12434;&#25351;&#23450;&#12375;&#12414;&#12377;&#12290;
+    'ni_daq' &#12364;&#20351;&#29992;&#21487;&#33021;&#12391;&#12377;&#12290;
+    - &#20491;&#12293;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#29992;&#12356;&#12390;&#21033;&#29992;&#12391;&#12365;&#12427;&#35013;&#32622;&#21517;&#12399; help(io) &#12391;&#30906;&#35469;&#12391;&#12365;&#12414;&#12377;&#12290;
+    command_type &#12398;&#25991;&#23383;&#21015;&#12399;&#22823;&#25991;&#23383;&#23567;&#25991;&#23383;&#12434;&#21306;&#21029;&#12373;&#12428;&#12414;&#12379;&#12435;&#12290;
+communication_method : &#25991;&#23383;&#21015;
+    &#36890;&#20449;&#26041;&#24335;&#12434;&#25351;&#23450;&#12375;&#12414;&#12377;&#12290;
+    'NI_USB' &#12364;&#20351;&#29992;&#21487;&#33021;&#12391;&#12377;&#12290;
+    - 'NI_USB' &#12398;&#22580;&#21512;&#12289;&#12373;&#12425;&#12395;&#12289;devname &#12434;&#24341;&#25968;&#12391;&#19982;&#12360;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;
+    &#36890;&#20449;&#26041;&#24335;&#12398;&#24341;&#25968;&#12395;&#12388;&#12356;&#12390;&#12398;&#35443;&#32048;&#12399;&#12289;pymeasure.create_communicator &#12434;
+    &#21442;&#29031;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;
+    communication_method &#12398;&#25991;&#23383;&#21015;&#12399;&#22823;&#25991;&#23383;&#23567;&#25991;&#23383;&#12434;&#21306;&#21029;&#12373;&#12428;&#12414;&#12379;&#12435;&#12290;
+
+Returns
+-------
+io : I/O &#12452;&#12531;&#12473;&#12479;&#12531;&#12473;
+
+Examples
+--------
+&gt;&gt;&gt; io = pymeasure.io('NI_DAQ', 'NI_USB', devname='Dev1')
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="coaxial_switch"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">coaxial_switch</span>(<span class="sig-arg">command_type</span>,
+        <span class="sig-arg">communication_method</span>,
+        <span class="sig-arg">*args</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pymeasure-pysrc.html#coaxial_switch">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+
+Coaxial Switch &#12395;&#25509;&#32154;&#12375;&#12289;&#20351;&#29992;&#12391;&#12365;&#12427;&#12424;&#12358;&#12395;&#12375;&#12414;&#12377;&#12290;
+
+Parameters
+----------
+command_type : &#25991;&#23383;&#21015;
+    &#21046;&#24481;&#12467;&#12510;&#12531;&#12489;&#12398;&#31278;&#39006;&#12434;&#25351;&#23450;&#12375;&#12414;&#12377;&#12290;
+    'agilent11713b', 'agilent11713c' &#12364;&#20351;&#29992;&#21487;&#33021;&#12391;&#12377;&#12290;
+    - &#20491;&#12293;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#29992;&#12356;&#12390;&#21033;&#29992;&#12391;&#12365;&#12427;&#35013;&#32622;&#21517;&#12399; help(cs) &#12391;&#30906;&#35469;&#12391;&#12365;&#12414;&#12377;&#12290;
+    command_type &#12398;&#25991;&#23383;&#21015;&#12399;&#22823;&#25991;&#23383;&#23567;&#25991;&#23383;&#12434;&#21306;&#21029;&#12373;&#12428;&#12414;&#12379;&#12435;&#12290;
+communication_method : &#25991;&#23383;&#21015;
+    &#36890;&#20449;&#26041;&#24335;&#12434;&#25351;&#23450;&#12375;&#12414;&#12377;&#12290;
+    'Ethernet', 'GPIB_Prologix' &#12364;&#20351;&#29992;&#21487;&#33021;&#12391;&#12377;&#12290;
+    - 'Ethernet' &#12398;&#22580;&#21512;&#12289;&#12373;&#12425;&#12395;&#12289;host, port &#12434;&#24341;&#25968;&#12391;&#19982;&#12360;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;
+    - 'GPIB_Prologix' &#12398;&#22580;&#21512;&#12289;&#12373;&#12425;&#12395;&#12289;host, port, gpib &#12434;&#24341;&#25968;&#12391;&#19982;&#12360;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;
+    &#36890;&#20449;&#26041;&#24335;&#12398;&#24341;&#25968;&#12395;&#12388;&#12356;&#12390;&#12398;&#35443;&#32048;&#12399;&#12289;pymeasure.create_communicator &#12434;
+    &#21442;&#29031;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;
+    communication_method &#12398;&#25991;&#23383;&#21015;&#12399;&#22823;&#25991;&#23383;&#23567;&#25991;&#23383;&#12434;&#21306;&#21029;&#12373;&#12428;&#12414;&#12379;&#12435;&#12290;
+
+Returns
+-------
+cs : Coaxial Switch &#12452;&#12531;&#12473;&#12479;&#12531;&#12473;
+
+Examples
+--------
+&gt;&gt;&gt; cs = pymeasure.coaxialswitch('Agilent11713C', 'Ethernet',
+                                 host='192.168.100.10', port=5025)
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="attenuator"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">attenuator</span>(<span class="sig-arg">command_type</span>,
+        <span class="sig-arg">communication_method</span>,
+        <span class="sig-arg">*args</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pymeasure-pysrc.html#attenuator">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+
+Attenuator &#12395;&#25509;&#32154;&#12375;&#12289;&#20351;&#29992;&#12391;&#12365;&#12427;&#12424;&#12358;&#12395;&#12375;&#12414;&#12377;&#12290;
+
+Parameters
+----------
+command_type : &#25991;&#23383;&#21015;
+    &#21046;&#24481;&#12467;&#12510;&#12531;&#12489;&#12398;&#31278;&#39006;&#12434;&#25351;&#23450;&#12375;&#12414;&#12377;&#12290;
+    'elva1' &#12364;&#20351;&#29992;&#21487;&#33021;&#12391;&#12377;&#12290;
+    - &#20491;&#12293;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#29992;&#12356;&#12390;&#21033;&#29992;&#12391;&#12365;&#12427;&#35013;&#32622;&#21517;&#12399; help(att) &#12391;&#30906;&#35469;&#12391;&#12365;&#12414;&#12377;&#12290;
+    command_type &#12398;&#25991;&#23383;&#21015;&#12399;&#22823;&#25991;&#23383;&#23567;&#25991;&#23383;&#12434;&#21306;&#21029;&#12373;&#12428;&#12414;&#12379;&#12435;&#12290;
+communication_method : &#25991;&#23383;&#21015;
+    &#36890;&#20449;&#26041;&#24335;&#12434;&#25351;&#23450;&#12375;&#12414;&#12377;&#12290;
+    'GPIB_Prologix' &#12364;&#20351;&#29992;&#21487;&#33021;&#12391;&#12377;&#12290;
+    - 'GPIB_Prologix' &#12398;&#22580;&#21512;&#12289;&#12373;&#12425;&#12395;&#12289;host, port, gpib &#12434;&#24341;&#25968;&#12391;&#19982;&#12360;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;
+    &#36890;&#20449;&#26041;&#24335;&#12398;&#24341;&#25968;&#12395;&#12388;&#12356;&#12390;&#12398;&#35443;&#32048;&#12399;&#12289;pymeasure.create_communicator &#12434;
+    &#21442;&#29031;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;
+    communication_method &#12398;&#25991;&#23383;&#21015;&#12399;&#22823;&#25991;&#23383;&#23567;&#25991;&#23383;&#12434;&#21306;&#21029;&#12373;&#12428;&#12414;&#12379;&#12435;&#12290;
+
+Returns
+-------
+att : Attenuator &#12452;&#12531;&#12473;&#12479;&#12531;&#12473;
+
+Examples
+--------
+&gt;&gt;&gt; att = pymeasure.attenuator('ELVA1', 'GPIB_Prologix',
+                               host='192.168.100.10', port=1234, gpib=4)
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Nov 28 02:56:02 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

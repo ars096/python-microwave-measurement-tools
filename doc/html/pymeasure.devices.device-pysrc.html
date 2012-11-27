@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>pymeasure.devices.device</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pymeasure-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="pymeasure-module.html">Package&nbsp;pymeasure</a> ::
+        <a href="pymeasure.devices-module.html">Package&nbsp;devices</a> ::
+        Module&nbsp;device
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="pymeasure.devices.device-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="pymeasure.devices.device-module.html">Module pymeasure.devices.device</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#! /usr/bin/env python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment">#-*- coding: utf-8 -*-</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">&#12487;&#12496;&#12452;&#12473;&#12398;&#35242;&#12463;&#12521;&#12473;(pymeasure.device) &#12392;&#12289;</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring">&#12487;&#12496;&#12452;&#12473;&#12398;&#12513;&#12477;&#12483;&#12489;&#12434;&#12487;&#12467;&#12524;&#12540;&#12488;&#12377;&#12427; open_close&#38306;&#25968;&#12434;&#23450;&#32681;&#12375;&#12390;&#12356;&#12414;&#12377;&#12290;</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">functools</tt> </tt>
+<a name="_open_close"></a><div id="_open_close-def"><a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt> <a class="py-toggle" href="#" id="_open_close-toggle" onclick="return toggle('_open_close');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="pymeasure.devices.device-module.html#_open_close">_open_close</a><tt class="py-op">(</tt><tt class="py-param">func</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_open_close-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="_open_close-expanded"><a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">functools</tt><tt class="py-op">.</tt><tt class="py-name">wraps</tt><tt class="py-op">(</tt><tt class="py-name">func</tt><tt class="py-op">)</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line">    <tt class="py-keyword">def</tt> <tt class="py-def-name">_do</tt><tt class="py-op">(</tt><tt class="py-param">cls</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">kwargs</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Variable pymeasure.devices.device.device.com=pymeasure.devices.device.device-class.html#com"><a title="pymeasure.devices.device.device.com" class="py-name" href="#" onclick="return doclink('link-0', 'com', 'link-0');">com</a></tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-string">'communicator is not set'</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-1" class="py-name"><a title="pymeasure.devices.device.device.com" class="py-name" href="#" onclick="return doclink('link-1', 'com', 'link-0');">com</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Variable pymeasure.communicators.communicator.communicator.is_open=pymeasure.communicators.communicator.communicator-class.html#is_open"><a title="pymeasure.communicators.communicator.communicator.is_open" class="py-name" href="#" onclick="return doclink('link-2', 'is_open', 'link-2');">is_open</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">            <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name"><a title="pymeasure.devices.device.device.com" class="py-name" href="#" onclick="return doclink('link-3', 'com', 'link-0');">com</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Method pymeasure.communicators.com_ehernet.network.open()=pymeasure.communicators.com_ehernet.network-class.html#open,Method pymeasure.communicators.com_network.network.open()=pymeasure.communicators.com_network.network-class.html#open,Method pymeasure.communicators.communicator.communicator.open()=pymeasure.communicators.communicator.communicator-class.html#open"><a title="pymeasure.communicators.com_ehernet.network.open
+pymeasure.communicators.com_network.network.open
+pymeasure.communicators.communicator.communicator.open" class="py-name" href="#" onclick="return doclink('link-4', 'open', 'link-4');">open</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">            <tt class="py-name">ret</tt> <tt class="py-op">=</tt> <tt class="py-name">func</tt><tt class="py-op">(</tt><tt class="py-name">cls</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-name">args</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-name">kwargs</tt><tt class="py-op">)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line">            <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name"><a title="pymeasure.devices.device.device.com" class="py-name" href="#" onclick="return doclink('link-5', 'com', 'link-0');">com</a></tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Method pymeasure.communicators.com_ehernet.network.close()=pymeasure.communicators.com_ehernet.network-class.html#close,Method pymeasure.communicators.com_network.network.close()=pymeasure.communicators.com_network.network-class.html#close,Method pymeasure.communicators.communicator.communicator.close()=pymeasure.communicators.communicator.communicator-class.html#close"><a title="pymeasure.communicators.com_ehernet.network.close
+pymeasure.communicators.com_network.network.close
+pymeasure.communicators.communicator.communicator.close" class="py-name" href="#" onclick="return doclink('link-6', 'close', 'link-6');">close</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">            <tt class="py-name">ret</tt> <tt class="py-op">=</tt> <tt class="py-name">func</tt><tt class="py-op">(</tt><tt class="py-name">cls</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-name">args</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-name">kwargs</tt><tt class="py-op">)</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">ret</tt> </tt>
+</div><a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">_do</tt> </tt>
+</div><a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"> </tt>
+<a name="device"></a><div id="device-def"><a name="L24"></a><tt class="py-lineno"> 24</tt> <a class="py-toggle" href="#" id="device-toggle" onclick="return toggle('device');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="pymeasure.devices.device.device-class.html">device</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="device-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="device-expanded"><a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">    <tt id="link-7" class="py-name"><a title="pymeasure.devices.device.device.com" class="py-name" href="#" onclick="return doclink('link-7', 'com', 'link-0');">com</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">    <tt id="link-8" class="py-name" targets="Variable pymeasure.devices.device.device.product_information=pymeasure.devices.device.device-class.html#product_information"><a title="pymeasure.devices.device.device.product_information" class="py-name" href="#" onclick="return doclink('link-8', 'product_information', 'link-8');">product_information</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"> </tt>
+<a name="device.__init__"></a><div id="device.__init__-def"><a name="L28"></a><tt class="py-lineno"> 28</tt> <a class="py-toggle" href="#" id="device.__init__-toggle" onclick="return toggle('device.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pymeasure.devices.device.device-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">communicator</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="device.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="device.__init__-expanded"><a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-9" class="py-name" targets="Module pymeasure.communicators.communicator=pymeasure.communicators.communicator-module.html,Class pymeasure.communicators.communicator.communicator=pymeasure.communicators.communicator.communicator-class.html"><a title="pymeasure.communicators.communicator
+pymeasure.communicators.communicator.communicator" class="py-name" href="#" onclick="return doclink('link-9', 'communicator', 'link-9');">communicator</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> <tt class="py-keyword">return</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method pymeasure.devices.device.device.set_communicator()=pymeasure.devices.device.device-class.html#set_communicator"><a title="pymeasure.devices.device.device.set_communicator" class="py-name" href="#" onclick="return doclink('link-10', 'set_communicator', 'link-10');">set_communicator</a></tt><tt class="py-op">(</tt><tt id="link-11" class="py-name"><a title="pymeasure.communicators.communicator
+pymeasure.communicators.communicator.communicator" class="py-name" href="#" onclick="return doclink('link-11', 'communicator', 'link-9');">communicator</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"> </tt>
+<a name="device.set_communicator"></a><div id="device.set_communicator-def"><a name="L33"></a><tt class="py-lineno"> 33</tt> <a class="py-toggle" href="#" id="device.set_communicator-toggle" onclick="return toggle('device.set_communicator');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pymeasure.devices.device.device-class.html#set_communicator">set_communicator</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">communicator</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="device.set_communicator-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="device.set_communicator-expanded"><a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">        &#36890;&#20449;&#12463;&#12521;&#12473;&#12434;&#12475;&#12483;&#12488;&#12375;&#12414;&#12377;&#12290;</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring">        Parameters</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-docstring">        ----------</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-docstring">        communicator : &#36890;&#20449;&#12452;&#12531;&#12473;&#12479;&#12531;&#12473;</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring">            pymeasure.create_communicator() &#12391;&#29983;&#25104;&#12373;&#12428;&#12427;&#36890;&#20449;&#12452;&#12531;&#12473;&#12479;&#12531;&#12473;&#12434;</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring">            &#29992;&#24847;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-docstring">        Returns</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-docstring">        -------</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-docstring">        com : &#36890;&#20449;&#12452;&#12531;&#12473;&#12479;&#12531;&#12473;</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-docstring">            &#12475;&#12483;&#12488;&#12373;&#12428;&#12383;&#36890;&#20449;&#12452;&#12531;&#12473;&#12479;&#12531;&#12473;&#12434;&#36820;&#12375;&#12414;&#12377;(&#30906;&#35469;&#29992;)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-docstring">        See Also</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-docstring">        --------</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-docstring">        create_communicator</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring">        Notes</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-docstring">        -----</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt class="py-docstring">        Examples</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-docstring">        --------</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-docstring">        &gt;&gt;&gt; com = pymeasure.create_communicator('Ethernet',</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-docstring">                                                host='192.168.0.10', port=1234)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt class="py-docstring">        &gt;&gt;&gt; dev.set_communicator(com)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-docstring">        &lt;pymeasure.communicators.com_ethernet.ethernet at 0x109992410&gt;</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="pymeasure.devices.device.device.com" class="py-name" href="#" onclick="return doclink('link-12', 'com', 'link-0');">com</a></tt> <tt class="py-op">=</tt> <tt id="link-13" class="py-name"><a title="pymeasure.communicators.communicator
+pymeasure.communicators.communicator.communicator" class="py-name" href="#" onclick="return doclink('link-13', 'communicator', 'link-9');">communicator</a></tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Method pymeasure.devices.device.device._communication_config()=pymeasure.devices.device.device-class.html#_communication_config"><a title="pymeasure.devices.device.device._communication_config" class="py-name" href="#" onclick="return doclink('link-14', '_communication_config', 'link-14');">_communication_config</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name"><a title="pymeasure.devices.device.device.com" class="py-name" href="#" onclick="return doclink('link-15', 'com', 'link-0');">com</a></tt> </tt>
+</div><a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
+<a name="device._communication_config"></a><div id="device._communication_config-def"><a name="L66"></a><tt class="py-lineno"> 66</tt> <a class="py-toggle" href="#" id="device._communication_config-toggle" onclick="return toggle('device._communication_config');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pymeasure.devices.device.device-class.html#_communication_config">_communication_config</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="device._communication_config-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="device._communication_config-expanded"><a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">_open_close</tt> </tt>
+<a name="device.get_product_information"></a><div id="device.get_product_information-def"><a name="L70"></a><tt class="py-lineno"> 70</tt> <a class="py-toggle" href="#" id="device.get_product_information-toggle" onclick="return toggle('device.get_product_information');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pymeasure.devices.device.device-class.html#get_product_information">get_product_information</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="device.get_product_information-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="device.get_product_information-expanded"><a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"><tt class="py-docstring">        &#27231;&#22120;&#22266;&#26377;&#12398;&#24773;&#22577;(&#12513;&#12540;&#12459;&#12540;,&#22411;&#30058;,&#12471;&#12522;&#12450;&#12523;,&#12496;&#12540;&#12472;&#12519;&#12531;,&#31561;)&#12434;&#21462;&#24471;&#12375;&#12414;&#12377;&#12290;</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-docstring">        Parameters</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-docstring">        ----------</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"><tt class="py-docstring">        None :</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-docstring">        Returns</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-docstring">        -------</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-docstring">        information : &#27231;&#22120;&#22266;&#26377;&#12398;&#24773;&#22577;(&#12513;&#12540;&#12459;&#12540;,&#22411;&#30058;,&#12471;&#12522;&#12450;&#12523;,&#12496;&#12540;&#12472;&#12519;&#12531;,&#31561;)</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-docstring">        Examples</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"><tt class="py-docstring">        --------</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-docstring">        &gt;&gt;&gt; sg.product_information()</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring">        'Agilent Technologies, E8247C, MY00000000, A.00.00\\n'</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">_open_close</tt> </tt>
+<a name="device.reset"></a><div id="device.reset-def"><a name="L90"></a><tt class="py-lineno"> 90</tt> <a class="py-toggle" href="#" id="device.reset-toggle" onclick="return toggle('device.reset');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pymeasure.devices.device.device-class.html#reset">reset</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="device.reset-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="device.reset-expanded"><a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt class="py-docstring">        &#12522;&#12475;&#12483;&#12488;&#12467;&#12510;&#12531;&#12489;&#12434;&#36865;&#20449;&#12375;&#12414;&#12377;&#12290;</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-docstring">        (&#27880;&#24847;&#65306;&#26410;&#23455;&#35013;&#12398;&#20107;&#12364;&#12354;&#12426;&#12414;&#12377;)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-docstring">        Examples</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring">        --------</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-docstring">        &gt;&gt;&gt; dev.reset()</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+</div></div><a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"> </tt>
+<a name="scpi_device"></a><div id="scpi_device-def"><a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt> <a class="py-toggle" href="#" id="scpi_device-toggle" onclick="return toggle('scpi_device');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="pymeasure.devices.device.scpi_device-class.html">scpi_device</a><tt class="py-op">(</tt><tt class="py-base-class">device</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="scpi_device-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="scpi_device-expanded"><a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">_open_close</tt> </tt>
+<a name="scpi_device.get_product_information"></a><div id="scpi_device.get_product_information-def"><a name="L105"></a><tt class="py-lineno">105</tt> <a class="py-toggle" href="#" id="scpi_device.get_product_information-toggle" onclick="return toggle('scpi_device.get_product_information');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pymeasure.devices.device.scpi_device-class.html#get_product_information">get_product_information</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="scpi_device.get_product_information-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="scpi_device.get_product_information-expanded"><a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="pymeasure.devices.device.device.com" class="py-name" href="#" onclick="return doclink('link-16', 'com', 'link-0');">com</a></tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Method pymeasure.communicators.com_ehernet.network.send()=pymeasure.communicators.com_ehernet.network-class.html#send,Method pymeasure.communicators.com_network.network.send()=pymeasure.communicators.com_network.network-class.html#send,Method pymeasure.communicators.communicator.communicator.send()=pymeasure.communicators.communicator.communicator-class.html#send"><a title="pymeasure.communicators.com_ehernet.network.send
+pymeasure.communicators.com_network.network.send
+pymeasure.communicators.communicator.communicator.send" class="py-name" href="#" onclick="return doclink('link-17', 'send', 'link-17');">send</a></tt><tt class="py-op">(</tt><tt class="py-string">'*IDN?'</tt><tt class="py-op">)</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="pymeasure.devices.device.device.product_information" class="py-name" href="#" onclick="return doclink('link-18', 'product_information', 'link-8');">product_information</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="pymeasure.devices.device.device.com" class="py-name" href="#" onclick="return doclink('link-19', 'com', 'link-0');">com</a></tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Method pymeasure.communicators.com_ehernet.network.recv()=pymeasure.communicators.com_ehernet.network-class.html#recv,Method pymeasure.communicators.com_network.network.recv()=pymeasure.communicators.com_network.network-class.html#recv,Method pymeasure.communicators.communicator.communicator.recv()=pymeasure.communicators.communicator.communicator-class.html#recv"><a title="pymeasure.communicators.com_ehernet.network.recv
+pymeasure.communicators.com_network.network.recv
+pymeasure.communicators.communicator.communicator.recv" class="py-name" href="#" onclick="return doclink('link-20', 'recv', 'link-20');">recv</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="pymeasure.devices.device.device.product_information" class="py-name" href="#" onclick="return doclink('link-21', 'product_information', 'link-8');">product_information</a></tt> </tt>
+</div><a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">    <tt id="link-22" class="py-name" targets="Method pymeasure.devices.dev_signal_generator.phasematrix.get_product_information()=pymeasure.devices.dev_signal_generator.phasematrix-class.html#get_product_information,Method pymeasure.devices.dev_spectrum_analyzer.hp8590.get_product_information()=pymeasure.devices.dev_spectrum_analyzer.hp8590-class.html#get_product_information,Method pymeasure.devices.device.device.get_product_information()=pymeasure.devices.device.device-class.html#get_product_information,Method pymeasure.devices.device.scpi_device.get_product_information()=pymeasure.devices.device.scpi_device-class.html#get_product_information"><a title="pymeasure.devices.dev_signal_generator.phasematrix.get_product_information
+pymeasure.devices.dev_spectrum_analyzer.hp8590.get_product_information
+pymeasure.devices.device.device.get_product_information
+pymeasure.devices.device.scpi_device.get_product_information" class="py-name" href="#" onclick="return doclink('link-22', 'get_product_information', 'link-22');">get_product_information</a></tt><tt class="py-op">.</tt><tt id="link-23" class="py-name" targets="Variable pymeasure.devices.dev_coaxial_switch.agilent_11713b.__doc__=pymeasure.devices.dev_coaxial_switch.agilent_11713b-class.html#__doc__,Variable pymeasure.devices.dev_coaxial_switch.agilent_11713c.__doc__=pymeasure.devices.dev_coaxial_switch.agilent_11713c-class.html#__doc__,Variable pymeasure.devices.dev_power_meter.anritsu_command.__doc__=pymeasure.devices.dev_power_meter.anritsu_command-class.html#__doc__,Variable pymeasure.devices.dev_signal_generator.anritsu.__doc__=pymeasure.devices.dev_signal_generator.anritsu-class.html#__doc__,Variable pymeasure.devices.dev_signal_generator.phasematrix.__doc__=pymeasure.devices.dev_signal_generator.phasematrix-class.html#__doc__,Variable pymeasure.devices.dev_signal_generator.scpi.__doc__=pymeasure.devices.dev_signal_generator.scpi-class.html#__doc__,Variable pymeasure.devices.dev_spectrum_analyzer.hp8590.__doc__=pymeasure.devices.dev_spectrum_analyzer.hp8590-class.html#__doc__,Variable pymeasure.devices.dev_spectrum_analyzer.scpi.__doc__=pymeasure.devices.dev_spectrum_analyzer.scpi-class.html#__doc__"><a title="pymeasure.devices.dev_coaxial_switch.agilent_11713b.__doc__
+pymeasure.devices.dev_coaxial_switch.agilent_11713c.__doc__
+pymeasure.devices.dev_power_meter.anritsu_command.__doc__
+pymeasure.devices.dev_signal_generator.anritsu.__doc__
+pymeasure.devices.dev_signal_generator.phasematrix.__doc__
+pymeasure.devices.dev_signal_generator.scpi.__doc__
+pymeasure.devices.dev_spectrum_analyzer.hp8590.__doc__
+pymeasure.devices.dev_spectrum_analyzer.scpi.__doc__" class="py-name" href="#" onclick="return doclink('link-23', '__doc__', 'link-23');">__doc__</a></tt> <tt class="py-op">=</tt> <tt id="link-24" class="py-name" targets="Module pymeasure.devices.device=pymeasure.devices.device-module.html,Class pymeasure.devices.device.device=pymeasure.devices.device.device-class.html"><a title="pymeasure.devices.device
+pymeasure.devices.device.device" class="py-name" href="#" onclick="return doclink('link-24', 'device', 'link-24');">device</a></tt><tt class="py-op">.</tt><tt id="link-25" class="py-name"><a title="pymeasure.devices.dev_signal_generator.phasematrix.get_product_information
+pymeasure.devices.dev_spectrum_analyzer.hp8590.get_product_information
+pymeasure.devices.device.device.get_product_information
+pymeasure.devices.device.scpi_device.get_product_information" class="py-name" href="#" onclick="return doclink('link-25', 'get_product_information', 'link-22');">get_product_information</a></tt><tt class="py-op">.</tt><tt id="link-26" class="py-name"><a title="pymeasure.devices.dev_coaxial_switch.agilent_11713b.__doc__
+pymeasure.devices.dev_coaxial_switch.agilent_11713c.__doc__
+pymeasure.devices.dev_power_meter.anritsu_command.__doc__
+pymeasure.devices.dev_signal_generator.anritsu.__doc__
+pymeasure.devices.dev_signal_generator.phasematrix.__doc__
+pymeasure.devices.dev_signal_generator.scpi.__doc__
+pymeasure.devices.dev_spectrum_analyzer.hp8590.__doc__
+pymeasure.devices.dev_spectrum_analyzer.scpi.__doc__" class="py-name" href="#" onclick="return doclink('link-26', '__doc__', 'link-23');">__doc__</a></tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">_open_close</tt> </tt>
+<a name="scpi_device.reset"></a><div id="scpi_device.reset-def"><a name="L113"></a><tt class="py-lineno">113</tt> <a class="py-toggle" href="#" id="scpi_device.reset-toggle" onclick="return toggle('scpi_device.reset');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pymeasure.devices.device.scpi_device-class.html#reset">reset</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="scpi_device.reset-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="scpi_device.reset-expanded"><a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">        <tt class="py-name">yn</tt> <tt class="py-op">=</tt> <tt class="py-name">raw_input</tt><tt class="py-op">(</tt><tt class="py-string">'Do you reset the product? (y/N)'</tt><tt class="py-op">)</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">yn</tt><tt class="py-op">.</tt><tt class="py-name">lower</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-string">'y'</tt><tt class="py-op">:</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="pymeasure.devices.device.device.com" class="py-name" href="#" onclick="return doclink('link-27', 'com', 'link-0');">com</a></tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="pymeasure.communicators.com_ehernet.network.send
+pymeasure.communicators.com_network.network.send
+pymeasure.communicators.communicator.communicator.send" class="py-name" href="#" onclick="return doclink('link-28', 'send', 'link-17');">send</a></tt><tt class="py-op">(</tt><tt class="py-string">'*RST'</tt><tt class="py-op">)</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+</div><a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">    <tt id="link-29" class="py-name" targets="Method pymeasure.devices.device.device.reset()=pymeasure.devices.device.device-class.html#reset,Method pymeasure.devices.device.scpi_device.reset()=pymeasure.devices.device.scpi_device-class.html#reset"><a title="pymeasure.devices.device.device.reset
+pymeasure.devices.device.scpi_device.reset" class="py-name" href="#" onclick="return doclink('link-29', 'reset', 'link-29');">reset</a></tt><tt class="py-op">.</tt><tt id="link-30" class="py-name"><a title="pymeasure.devices.dev_coaxial_switch.agilent_11713b.__doc__
+pymeasure.devices.dev_coaxial_switch.agilent_11713c.__doc__
+pymeasure.devices.dev_power_meter.anritsu_command.__doc__
+pymeasure.devices.dev_signal_generator.anritsu.__doc__
+pymeasure.devices.dev_signal_generator.phasematrix.__doc__
+pymeasure.devices.dev_signal_generator.scpi.__doc__
+pymeasure.devices.dev_spectrum_analyzer.hp8590.__doc__
+pymeasure.devices.dev_spectrum_analyzer.scpi.__doc__" class="py-name" href="#" onclick="return doclink('link-30', '__doc__', 'link-23');">__doc__</a></tt> <tt class="py-op">=</tt> <tt id="link-31" class="py-name"><a title="pymeasure.devices.device
+pymeasure.devices.device.device" class="py-name" href="#" onclick="return doclink('link-31', 'device', 'link-24');">device</a></tt><tt class="py-op">.</tt><tt id="link-32" class="py-name"><a title="pymeasure.devices.device.device.reset
+pymeasure.devices.device.scpi_device.reset" class="py-name" href="#" onclick="return doclink('link-32', 'reset', 'link-29');">reset</a></tt><tt class="py-op">.</tt><tt id="link-33" class="py-name"><a title="pymeasure.devices.dev_coaxial_switch.agilent_11713b.__doc__
+pymeasure.devices.dev_coaxial_switch.agilent_11713c.__doc__
+pymeasure.devices.dev_power_meter.anritsu_command.__doc__
+pymeasure.devices.dev_signal_generator.anritsu.__doc__
+pymeasure.devices.dev_signal_generator.phasematrix.__doc__
+pymeasure.devices.dev_signal_generator.scpi.__doc__
+pymeasure.devices.dev_spectrum_analyzer.hp8590.__doc__
+pymeasure.devices.dev_spectrum_analyzer.scpi.__doc__" class="py-name" href="#" onclick="return doclink('link-33', '__doc__', 'link-23');">__doc__</a></tt> </tt>
+</div><a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pymeasure-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Nov 28 02:56:03 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
