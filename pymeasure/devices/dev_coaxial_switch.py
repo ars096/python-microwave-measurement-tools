@@ -18,10 +18,58 @@ def select_coaxial_switch(command_type, *args, **kwargs):
 
 
 class coaxial_switch(object):
+    """
+    Coaxial Switch
+    ==============
+
+    使用できるメソッド
+    ------------------
+    * set_ch(ch)
+    * check_ch()
+
+    * get_product_information()
+
+    使用できるプロパティ
+    -------------------
+    * tested_products
+    """
     def set_ch(self, ch):
+        """
+        スイッチを接続するチャンネルを設定します。
+
+        Parameters
+        ----------
+        ch : int
+            接続するチャンネル
+
+        Returns
+        -------
+        ch : list, 設定後の接続チャンネルのリスト
+
+        Examples
+        --------
+        >>> cs.set_ch(2)
+        (2, 2)
+        """
         pass
 
     def check_ch(self):
+        """
+        スイッチが接続しているチャンネルを確認します。
+
+        Parameters
+        ----------
+        None :
+
+        Returns
+        -------
+        ch : list, 設定後の接続チャンネルのリスト
+
+        Examples
+        --------
+        >>> cs.check_ch()
+        (2, 2)
+        """
         pass
 
 
@@ -83,6 +131,12 @@ class agilent(device.scpi_device):
 
 
 class agilent_11713b(coaxial_switch, agilent):
+    tested_products = {
+        'Agilent Technologies':[
+            '11713B, GPIB',
+            ]
+    }
+
     def check_ch(self):
         getch = lambda x: numpy.where(numpy.array(x)==1)[0][0] + 1
         x1 = getch(self.check_open_switch('101:104'))
@@ -102,15 +156,19 @@ class agilent_11713b(coaxial_switch, agilent):
         self.set_open_switch('%d'%(100+ch[1]+4))
         return self.check_ch()
 
-class agilent_11713c(coaxial_switch, agilent):
-    """
-    tested products
-    ===============
-        Agilent Technologies
-        ----------------------
-            11713C, ehternet(port=5025)
+    # set doc strings
+    __doc__ = coaxial_switch.__doc__
+    set_ch.__doc__ = coaxial_switch.set_ch.__doc__
+    check_ch.__doc__ = coaxial_switch.check_ch.__doc__
 
-    """
+
+class agilent_11713c(coaxial_switch, agilent):
+    tested_products = {
+        'Agilent Technologies':[
+            '11713C, Ethernet(port=5025)',
+            ]
+    }
+
     def check_ch(self):
         getch = lambda x: numpy.where(numpy.array(x)==1)[0][0] + 1
         x1 = getch(self.check_open_switch('101:104'))
@@ -134,3 +192,8 @@ class agilent_11713c(coaxial_switch, agilent):
         self.set_open_switch('%d'%(200+ch[1]))
         self.set_open_switch('%d'%(200+ch[1]+4))
         return self.check_ch()
+
+    # set doc strings
+    __doc__ = coaxial_switch.__doc__
+    set_ch.__doc__ = coaxial_switch.set_ch.__doc__
+    check_ch.__doc__ = coaxial_switch.check_ch.__doc__
